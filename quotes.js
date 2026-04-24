@@ -1,15 +1,6 @@
-const quoteContainer = document.getElementById("quote-container");
-const quoteText = document.getElementById("quote");
-const authorText = document.getElementById("author");
-const twitterBtn = document.getElementById("twitterid");
-const newQuoteBtn = document.getElementById("new-quote");
-const loader = document.getElementById("loader");
-
-// local Quotes
-const localQuotes = [
+export const localQuotes = [
   {
-    quote:
-      "Genius is one percent inspiration and ninety-nine percent perspiration.",
+    quote: "Genius is one percent inspiration and ninety-nine percent perspiration.",
     author: "Thomas Edison",
   },
   {
@@ -273,8 +264,7 @@ const localQuotes = [
     author: "African proverb",
   },
   {
-    quote:
-      "Real magic in relationships means an absence of judgement of others.",
+    quote: "Real magic in relationships means an absence of judgement of others.",
     author: "Wayne Dyer",
   },
   {
@@ -322,8 +312,7 @@ const localQuotes = [
     author: "Michelangelo",
   },
   {
-    quote:
-      "Courage is going from failure to failure without losing enthusiasm.",
+    quote: "Courage is going from failure to failure without losing enthusiasm.",
     author: "Winston Churchill",
   },
   {
@@ -563,66 +552,3 @@ const localQuotes = [
     author: null,
   },
 ];
-
-// Show loading
-function loading() {
-  quoteContainer.hidden = true;
-  loader.hidden = false;
-}
-// Hide loading
-function complete() {
-  quoteContainer.hidden = false;
-  loader.hidden = true;
-}
-
-// Local Quote
-function localQuote() {}
-
-// Show New Quote
-function newQuote(apiQuotes) {
-  // Check if Author field is blank and replace it with 'Unknown'
-  !apiQuotes.author
-    ? (authorText.textContent = "Unknown")
-    : (authorText.textContent = apiQuotes.author);
-
-  // Check quote length to determine styling
-  apiQuotes.quote.length > 120
-    ? quoteText.classList.add("long-quote")
-    : quoteText.classList.remove("long-quote");
-
-  quoteText.textContent = apiQuotes.quote;
-}
-let apiQuote = [];
-let quote = [];
-
-// Get Quotes From API
-async function getQuotes() {
-  loading();
-  const apiUrl = `https://dummyjson.com/quotes/random`;
-  try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error("API failed");
-    }
-    apiQuote = await response.json();
-    newQuote(apiQuote);
-  } catch (error) {
-    const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
-    // fetch local Data
-    console.log("Using local Data");
-    newQuote(quote);
-  }
-  complete();
-}
-// Tweet Quote
-const tweetQuote = async () => {
-  const twitterUrl =
-    await `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
-  window.open(twitterUrl, "_blank");
-};
-
-// Event Listeners
-newQuoteBtn.addEventListener("click", getQuotes);
-twitterBtn.addEventListener("click", tweetQuote);
-// on Load
-getQuotes();
