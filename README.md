@@ -71,7 +71,7 @@ https://twitter.com/intent/tweet
 ## ▶️ Run Locally
 
 ```bash
-[git clone https://github.com/your-username/quote-generator.git](https://github.com/mekihallil/quote-generator)
+https://github.com/mekihallil/quote-generator
 cd quote-generator
 ```
 
