@@ -6,7 +6,7 @@ A modern Quote Generator web app that displays random quotes and allows users to
 
 🚀 Live Demo
 
-👉 (Add your deployed link here — e.g., Vercel / Netlify)
+👉 https://mekihallil.github.io/quote-generator/
 
 ---
 
@@ -85,11 +85,6 @@ index.html
 
 ## 📸 Screenshot
 
-
-![Uploading Screenshot 2026-04-24 151150.png…](Responsive)
-
-
----
 Full Screen
 <img width="959" height="902" alt="Full screen" src="https://github.com/user-attachments/assets/a57b2bfb-80ef-4775-9911-d693e4d397d4" />
 
